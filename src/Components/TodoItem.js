@@ -1,11 +1,12 @@
 import React from 'react';
+import './TodoItem.css';
 
 function TodoItem(props) {
     return(
-        <li>
-            <span>C</span>
+        <li className='TodoItem'>
+            <span className={`Icon Icon-check`}>C</span>
             <p>{props.texto}</p>
-            <span>X</span>
+            <span className='Icon Icon-delete'>X</span>
         </li>
     );
 }
