@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { TodoCounter } from "../TodoCounter/TodoCounter";
 import { TodoSearch } from "../TodoSearch/TodoSearch";
 import { TodoList } from "../TodoList/TodoList";

@@ -1,17 +1,18 @@
 import React from "react";
 import {AppUI} from './AppUI'
-//import './App.css';
+import { useLocalStorage } from "../../Hooks/useLocalStorage";
 
-const defaultTodos = [
-  {text: 'Cortar cebolla', completed: false},
-  {text: 'Practicando con React', completed: true},
-  {text: 'Escuchar post-rock', completed: false},
-  {text: 'Ir a la compra', completed: true}
-]
+// const defaultTodos = [
+//   {text: 'Cortar cebolla', completed: false},
+//   {text: 'Practicando con React', completed: true},
+//   {text: 'Escuchar post-rock', completed: false},
+//   {text: 'Ir a la compra', completed: true}
+// ]
 
 function App() {
   //Estado inicial de TODOs
-  const [todos, setTodos] = React.useState(defaultTodos);
+  //Desestructuramos los datos que retornamos de nuestro custom hook, y le pasamos los argumentos que necesitamos (nombre y estado inicial)
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   //Filtrar
   const [searchValue, setSearchValue] = React.useState('');
   //Cantidad de TODOs completados. ! es falso, !! falso es verdadero
@@ -46,7 +47,7 @@ function App() {
     //   text: todos[todoIndex].text,
     //   completed: true,
     // }
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }
 
   const deleteTodo = (text) => {
@@ -56,7 +57,7 @@ function App() {
     const newTodos = [...todos];
     //Enviamos dos argumentos, el index (la posicion donde vamos a empezar a cortar) cuanto queremos cortar
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }
 
   //Cuando los usuarios no escriban nada, mostraremos todos los ToDos, pero cuando escriban algo solo mostraremos los que complan esa condicion de busqueda, el filter que hicimos.
