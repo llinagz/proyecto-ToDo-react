@@ -37,6 +37,15 @@ function TodoProvider(props){
         })
     }
 
+    const addTodo = (text) => {
+        const newTodos = [...todos];
+        newTodos.push({
+            completed: false,
+            text,
+        })
+        saveTodos(newTodos);
+    }
+
     //Re-render de nuestros componentes que recibiran la nueva lista de todos que el unico cambio que tienen es que el todo que tenga el mismo texto ahora tenga la propiedad completed como true
     const completeTodo = (text) => {
         //Buscamos el index, la posicion del array del ToDo para luego cambiar lo que tengamos que cambiar
@@ -71,6 +80,7 @@ function TodoProvider(props){
             searchValue,
             setSearchValue,
             searchedTodos,
+            addTodo,
             completeTodo,
             deleteTodo,
             openModal,

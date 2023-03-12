@@ -6,6 +6,7 @@ import { TodoList } from "../TodoList/TodoList";
 import { TodoItem } from "../TodoItem/TodoItem";
 import { CreateTodoButton } from "../CreateTodoButtom/CreateTodoButton";
 import {Modal} from "../Modal/Modal"
+import { TodoForm } from '../TodoForm/TodoForm';
 
 //Recibimos estas propiedades que hay que enviarselas a sus respectivos componentes
 function AppUI()
@@ -41,7 +42,8 @@ function AppUI()
 
           {!!openModal && (
             <Modal>
-              <p>{searchedTodos[0]?.text}</p>
+              <TodoForm />
+              {/* <p>{searchedTodos[0]?.text}</p> */}
             </Modal>
           )}
 
