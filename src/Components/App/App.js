@@ -12,7 +12,13 @@ import { useLocalStorage } from "../../Hooks/useLocalStorage";
 function App() {
   //Estado inicial de TODOs
   //Desestructuramos los datos que retornamos de nuestro custom hook, y le pasamos los argumentos que necesitamos (nombre y estado inicial)
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    //Renombramos con los dos puntos, lo que antes se llama item, ahora se llama todos... etc.
+    item: todos, 
+    saveItem: saveTodos, 
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V1', []);
   //Filtrar
   const [searchValue, setSearchValue] = React.useState('');
   //Cantidad de TODOs completados. ! es falso, !! falso es verdadero
@@ -30,7 +36,6 @@ function App() {
       //Convertimos todo a minusculas, buscamos cuales de estos ToDos incluyen el texto que escribimos en nuestro cuadro de busqueda
       const todoText = todo.text.toLowerCase();
       const searchText = searchValue.toLowerCase();
-
       return todoText.includes(searchText);
     })
   }
@@ -63,6 +68,8 @@ function App() {
   //Cuando los usuarios no escriban nada, mostraremos todos los ToDos, pero cuando escriban algo solo mostraremos los que complan esa condicion de busqueda, el filter que hicimos.
   return(
     <AppUI 
+      error={error}
+      loading={loading}
       totalTodos={totalTodos} 
       completedTodos={completedTodos}
       searchValue={searchValue} 
