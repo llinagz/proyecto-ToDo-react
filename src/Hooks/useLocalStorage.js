@@ -40,7 +40,7 @@ function useLocalStorage(itemName, initialValue) {
         {
           setLoading(false);
         }
-      }, 1000);
+      }, 5000);
     }) ;
   
     // Actualizamos la función para guardar nuestro item con las nuevas variables y parámetros como en nuestro estado con react

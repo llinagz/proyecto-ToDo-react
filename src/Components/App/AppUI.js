@@ -5,8 +5,10 @@ import { TodoSearch } from "../TodoSearch/TodoSearch";
 import { TodoList } from "../TodoList/TodoList";
 import { TodoItem } from "../TodoItem/TodoItem";
 import { CreateTodoButton } from "../CreateTodoButtom/CreateTodoButton";
-import {Modal} from "../Modal/Modal"
+import { Modal } from "../Modal/Modal"
 import { TodoForm } from '../TodoForm/TodoForm';
+import { EmptyTodos } from '../EmptyTodos/EmptyTodos';
+import { TodosLoading } from '../TodosLoading/TodosLoading';
 
 //Recibimos estas propiedades que hay que enviarselas a sus respectivos componentes
 function AppUI()
@@ -26,8 +28,8 @@ function AppUI()
           <TodoSearch />
           <TodoList>
             {error && <p>¡Hubo un error!</p>}
-            {loading && <p>Cargando...</p>}
-            {(!loading && !searchedTodos.length) && <p>¡Crea tu primer TODO!</p>}
+            {loading && <TodosLoading />}
+            {(!loading && !searchedTodos.length) && <EmptyTodos />}
             
             {searchedTodos.map(todo =>(
               <TodoItem 
