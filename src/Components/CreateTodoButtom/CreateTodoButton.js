@@ -1,14 +1,14 @@
 import React from 'react';
 import './CreateTodoButton.css';
 
-function CreateTodoButton(){
+function CreateTodoButton({setOpenModal, openModal}){
 
-    const onClickButton = (msg) => {
-        alert(msg);
-    }
+    const onClickButton = () => {
+        setOpenModal(!openModal);
+    };
 
     return(
-        <button className='CreateTodoButton' onClick={() => onClickButton('Hola, hola')}>+</button>
+        <button className='CreateTodoButton' onClick={onClickButton}>+</button>
     );
 }
 
