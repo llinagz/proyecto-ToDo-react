@@ -1,2 +1,2 @@
-# proyecto-todo-react
-Aplicación de ToDo realizada con React
+# Proyecto ToDO
+Aplicación de lista de tareas realizada en React.
